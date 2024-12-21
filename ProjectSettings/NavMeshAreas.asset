@@ -6,17 +6,17 @@ NavMeshProjectSettings:
   serializedVersion: 2
   areas:
   - name: Walkable
-    cost: 1
+    cost: 2.5
   - name: Not Walkable
     cost: 1
   - name: Jump
     cost: 2
-  - name: Expensive
+  - name: Asphalt
     cost: 3
-  - name: Regular
-    cost: 2
-  - name: Cheap
-    cost: 1
+  - name: Slippery Goo
+    cost: 1.5
+  - name: Sand
+    cost: 5
   - name: 
     cost: 1
   - name: 
