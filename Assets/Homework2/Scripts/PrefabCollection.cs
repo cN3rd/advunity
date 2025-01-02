@@ -60,9 +60,7 @@ public class PrefabCollection : ScriptableObject
         _defaultSubcollection = new PrefabSubCollection(prefabs, totalChance);
     }
     
-    public void UpdateInternals() => PrecalculateInternals();
-
-    private PrefabItem GetRandomPrefab() => GetRandomPrefab(_defaultSubcollection);
+    public PrefabItem GetRandomPrefab() => GetRandomPrefab(_defaultSubcollection);
     public PrefabItem GetRandomPrefab(PrefabTag tag) => GetRandomPrefab(_prefabSubCollections[tag]);
 
     private PrefabItem GetRandomPrefab(PrefabSubCollection subCollection)
