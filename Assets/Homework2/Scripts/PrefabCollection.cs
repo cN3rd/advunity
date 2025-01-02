@@ -31,19 +31,22 @@ public class PrefabCollection : ScriptableObject
     private readonly System.Random _random = new();
     private PrefabSubCollection _defaultSubcollection;
 
+    // unity events triggers for precalculating things
     private void Awake() => PrecalculateInternals();
 #if UNITY_EDITOR
     private void OnValidate() => PrecalculateInternals();
 #endif
 
     /// <summary>
-    ///     Utility function used for precalculating subcollections and total chance across the board
+    /// Precalculates subcollections and total chances across the board
+    /// For "fetch random element" operations
     /// </summary>
     private void PrecalculateInternals()
     {
         float totalChance = 0f;
         _prefabSubCollections.Clear();
         
+        // build a subcollection for each tag so we'd be able to select random prefabs from it
         var prefabTags = Enum.GetValues(typeof(PrefabTag)).Cast<PrefabTag>().ToArray();
         foreach (PrefabTag tag in prefabTags)
         {
@@ -60,22 +63,39 @@ public class PrefabCollection : ScriptableObject
         _defaultSubcollection = new PrefabSubCollection(prefabs, totalChance);
     }
     
-    public PrefabItem GetRandomPrefab() => GetRandomPrefab(_defaultSubcollection);
-    public PrefabItem GetRandomPrefab(PrefabTag tag) => GetRandomPrefab(_prefabSubCollections[tag]);
+    /// <summary>
+    /// Get a random prefab from the collection
+    /// </summary>
+    /// <returns>The prefab (as a game object)</returns>
+    public GameObject GetRandomPrefab() => GetRandomPrefab(_defaultSubcollection);
+    
+    /// <summary>
+    /// Get a random prefab carrying a certain tag from the collection
+    /// </summary>
+    /// <param name="tag">Tag required by the prefab</param>
+    /// <returns>The prefab (as a game object)</returns>
+    public GameObject GetRandomPrefab(PrefabTag tag) => GetRandomPrefab(_prefabSubCollections[tag]);
 
-    private PrefabItem GetRandomPrefab(PrefabSubCollection subCollection)
+    /// <summary>
+    /// Get a random prefab from a subcollection
+    /// </summary>
+    /// <param name="subCollection">the relevant subcollection</param>
+    /// <returns>The prefab (as a game object)</returns>
+    private GameObject GetRandomPrefab(PrefabSubCollection subCollection)
     {
         if (subCollection.Prefabs == null || subCollection.Prefabs.Count == 0) return null;
 
         // A variation of this: https://stackoverflow.com/a/4463622
         float randomValue = (float)_random.NextDouble() * subCollection.TotalChance;
         float currentTotal = 0f;
-        foreach (PrefabItem prefab in subCollection.Prefabs)
+        foreach (PrefabItem prefabItem in subCollection.Prefabs)
         {
-            currentTotal += prefab.chance;
-            if (randomValue <= currentTotal) { return prefab; }
+            currentTotal += prefabItem.chance;
+            if (randomValue <= currentTotal) { return prefabItem.prefab; }
         }
 
-        return prefabs[^1];
+        // ^1 is the syntax for the "last element of array"
+        // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/ranges#systemindex
+        return prefabs[^1].prefab;
     }
 }
