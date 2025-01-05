@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Homework2.Scripts
 {
-    [SerializeField] private PrefabCollection prefabCollection;
+    public class GameManager : MonoBehaviour
+    {
+        [SerializeField] private PrefabCollection prefabCollection;
+    }
 }
