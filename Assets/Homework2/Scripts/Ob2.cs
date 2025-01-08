@@ -5,6 +5,8 @@ namespace Homework2.Scripts
 {
     public class Ob2 : MonoBehaviour
     {
+        [SerializeField] private ObjectsManager objectsManager;
+
         public event UnityAction SayHi;
         public event UnityAction<int> SayInteger;
         public event UnityAction<string> SayString;
@@ -12,33 +14,15 @@ namespace Homework2.Scripts
         [SerializeField] private UnityEvent HitShlomo = new UnityEvent();
         [SerializeField] private UnityEvent<GameObject> HitMark = new UnityEvent<GameObject>();
 
+
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag("OB1"))
-                return;
-
-            Ob1 ob1 = other.GetComponent<Ob1>();
-            SayHi += ob1.OnHitHi;
-            SayInteger += ob1.OnHitInt;
-            SayString += ob1.OnHitString;
-
-            SayHi?.Invoke();
-            SayInteger?.Invoke(ob1.GetDamage());
-            SayString?.Invoke(ob1.GetString());
-
-            HitShlomo?.Invoke();
-            HitMark?.Invoke(ob1.gameObject);
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (!other.CompareTag("OB1")) return;
-
-            Ob1 ob1 = other.GetComponent<Ob1>();
-
-            SayHi -= ob1.OnHitHi;
-            SayInteger -= ob1.OnHitInt;
-            SayString -= ob1.OnHitString;
+            if (other.CompareTag("OB1"))
+            {
+                SayHi.Invoke();
+                SayInteger.Invoke(objectsManager.Damage);
+                SayString.Invoke(objectsManager.Name);
+            }
         }
 
         public void OnHitShlomo()
