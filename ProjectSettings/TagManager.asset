@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - OB1
+  - Children
+  - Teachers
+  - Mark
   layers:
   - Default
   - TransparentFX
