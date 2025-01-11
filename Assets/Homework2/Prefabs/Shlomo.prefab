@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3431351987157272941}
   - component: {fileID: -5439878186090584509}
   m_Layer: 0
-  m_Name: Teachers
+  m_Name: Shlomo
   m_TagString: Teachers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6be841fab38b6b2449a869238d811176, type: 2}
+  - {fileID: 2100000, guid: 9b8a68d745457d54bbea73214788e8d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
