@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 104776558000484468}
   - component: {fileID: 6454859961303815711}
   m_Layer: 0
-  m_Name: Children
+  m_Name: Gal
   m_TagString: Children
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6be841fab38b6b2449a869238d811176, type: 2}
+  - {fileID: 2100000, guid: 55e0355e3ff77c54b861ece721d69f34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
