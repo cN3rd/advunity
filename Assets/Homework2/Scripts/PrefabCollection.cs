@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = System.Random;
 
 public enum PrefabTag
 {
-    Children, Teachers, Mark
+    Children, Teachers, LesserMark
 }
 
 [Serializable]
@@ -14,22 +15,19 @@ public class PrefabItem
     public GameObject prefab;
     public float chance = 1;
     public PrefabTag tag;
-};
+}
 
 [CreateAssetMenu(fileName = "PrefabCollection", menuName = "Scriptable Objects/PrefabCollection")]
 public class PrefabCollection : ScriptableObject
 {
     // public interface
     [SerializeField] private List<PrefabItem> prefabs = new();
-    public List<PrefabItem> Prefabs => prefabs;
-    
-    // helper definition for internal calculations
-    private record PrefabSubCollection(List<PrefabItem> Prefabs, float TotalChance);
 
     // values to precalculate (IMO this is better to do this in a separate class)
     private readonly Dictionary<PrefabTag, PrefabSubCollection> _prefabSubCollections = new();
-    private readonly System.Random _random = new();
+    private readonly Random _random = new();
     private PrefabSubCollection _defaultSubcollection;
+    public List<PrefabItem> Prefabs => prefabs;
 
     // unity events triggers for precalculating things
     private void Awake() => PrecalculateInternals();
@@ -38,14 +36,14 @@ public class PrefabCollection : ScriptableObject
 #endif
 
     /// <summary>
-    /// Precalculates subcollections and total chances across the board
-    /// For "fetch random element" operations
+    ///     Precalculates subcollections and total chances across the board
+    ///     For "fetch random element" operations
     /// </summary>
     private void PrecalculateInternals()
     {
         float totalChance = 0f;
         _prefabSubCollections.Clear();
-        
+
         // build a subcollection for each tag so we'd be able to select random prefabs from it
         var prefabTags = Enum.GetValues(typeof(PrefabTag)).Cast<PrefabTag>().ToArray();
         foreach (PrefabTag tag in prefabTags)
@@ -56,28 +54,28 @@ public class PrefabCollection : ScriptableObject
 
             PrefabSubCollection prefabSubcollection = new(subcollection, subcollectionTotalChance);
             _prefabSubCollections[tag] = prefabSubcollection;
-            
+
             totalChance += subcollectionTotalChance;
         }
 
         _defaultSubcollection = new PrefabSubCollection(prefabs, totalChance);
     }
-    
+
     /// <summary>
-    /// Get a random prefab from the collection
+    ///     Get a random prefab from the collection
     /// </summary>
     /// <returns>The prefab (as a game object)</returns>
     public GameObject GetRandomPrefab() => GetRandomPrefab(_defaultSubcollection);
-    
+
     /// <summary>
-    /// Get a random prefab carrying a certain tag from the collection
+    ///     Get a random prefab carrying a certain tag from the collection
     /// </summary>
     /// <param name="tag">Tag required by the prefab</param>
     /// <returns>The prefab (as a game object)</returns>
     public GameObject GetRandomPrefab(PrefabTag tag) => GetRandomPrefab(_prefabSubCollections[tag]);
 
     /// <summary>
-    /// Get a random prefab from a subcollection
+    ///     Get a random prefab from a subcollection
     /// </summary>
     /// <param name="subCollection">the relevant subcollection</param>
     /// <returns>The prefab (as a game object)</returns>
@@ -98,4 +96,7 @@ public class PrefabCollection : ScriptableObject
         // https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-8.0/ranges#systemindex
         return prefabs[^1].prefab;
     }
+
+    // helper definition for internal calculations
+    private record PrefabSubCollection(List<PrefabItem> Prefabs, float TotalChance);
 }
