@@ -13,12 +13,18 @@ MonoBehaviour:
   m_Name: MyInfamousPrefabCollection
   m_EditorClassIdentifier: 
   prefabs:
-  - prefab: {fileID: 8638878263539376899, guid: f0840c4ff522bfe4b9c2e8000e824714, type: 3}
+  - prefab: {fileID: 8638878263539376899, guid: c58c47bf9e37a134294b5a28c415ec76, type: 3}
     chance: 1
     tag: 2
   - prefab: {fileID: 2485373011598343171, guid: 1cab6e04ccb45ce43a33610e3a6ea245, type: 3}
     chance: 2
     tag: 0
+  - prefab: {fileID: 2485373011598343171, guid: f171f7993e211014f85ee0a682446720, type: 3}
+    chance: 3
+    tag: 0
+  - prefab: {fileID: 8638878263539376899, guid: ba2b18f92c2459b499c7d41eb23c53cf, type: 3}
+    chance: 3
+    tag: 1
   - prefab: {fileID: 8638878263539376899, guid: f7be70dca5d730b42bb869cda541b168, type: 3}
     chance: 3
     tag: 1
