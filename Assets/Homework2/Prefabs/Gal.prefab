@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 1855922916907138640}
   - component: {fileID: 3577912846630798998}
   - component: {fileID: 1290545065647071413}
-  - component: {fileID: 104776558000484468}
-  - component: {fileID: 6454859961303815711}
+  - component: {fileID: -5328161474330339636}
+  - component: {fileID: 8818549186989208870}
   m_Layer: 0
   m_Name: Gal
-  m_TagString: Children
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,27 +104,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &104776558000484468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2485373011598343171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1e723f392f184048b5d85981a3d4543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  name: Gal
---- !u!54 &6454859961303815711
+--- !u!54 &-5328161474330339636
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,8 +132,21 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8818549186989208870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2485373011598343171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e723f392f184048b5d85981a3d4543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
