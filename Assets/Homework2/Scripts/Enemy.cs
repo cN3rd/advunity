@@ -19,6 +19,7 @@ namespace Homework2.Scripts
         [SerializeField] private UnityEvent<EnemyHitInfo> OnHit;
 
         private BigInteger _health;
+        public BigInteger Health => _health;
 
         private void Awake()
         {
@@ -31,9 +32,7 @@ namespace Homework2.Scripts
             Debug.Log("Invalid health value! Health set to 1.");
             _health = BigInteger.One;
         }
-
-        private void Update() => DecreaseHealth(5);
-
+        
         public void DecreaseHealth(int damage)
         {
             if (_health <= 0) return;

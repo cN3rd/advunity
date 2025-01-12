@@ -491,7 +491,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1704239393596241380, guid: f0840c4ff522bfe4b9c2e8000e824714, type: 3}
       propertyPath: serializedHealth
-      value: 1e15
+      value: 1e5
       objectReference: {fileID: 0}
     - target: {fileID: 1704239393596241380, guid: f0840c4ff522bfe4b9c2e8000e824714, type: 3}
       propertyPath: OnHit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -911,12 +911,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '`Enter` - spawn anything
+  m_text: 'Shoot mark with prefabs!
 
-    `c` - shoot a child
+    `Enter` - shoot a random prefab
 
-    `m` - shoot a lesser
-    mark
+    `c`
+    - shoot a child
+
+    `m` - shoot a lesser mark
 
     `t` - shoot a teacher'
   m_isRightToLeft: 0

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +11,9 @@ namespace Homework2.Scripts
         [SerializeField] private Enemy enemy;
         [SerializeField] private TextMeshProUGUI healthText;
 
-        public void Update()
+        private void Start() => healthText.text = $"Mark's HP:\n{enemy.Health:N0}";
+
+        private void Update()
         {
             // Direct use of input system since we're lazy lmao
             Keyboard keyboard = Keyboard.current;
@@ -54,7 +57,7 @@ namespace Homework2.Scripts
         private void OnHitEnemy(int damage) => enemy.DecreaseHealth(damage);
 
         public void UpdateStatusOnHit(EnemyHitInfo enemyHitInfo) => healthText.text =
-            $"Mark got hit by {enemyHitInfo.Damage} points.\nRemaining Mark's HP:\n{enemyHitInfo.RemainingHealth}";
+            $"Mark got hit by {enemyHitInfo.Damage} points.\nRemaining Mark's HP:\n{enemyHitInfo.RemainingHealth:N0}";
 
         public void UpdateStatusOnDeath() => healthText.text = "Mark's dead, long live Eldar.";
     }
