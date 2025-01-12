@@ -581,17 +581,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0840c4ff522bfe4b9c2e8000e824714, type: 3}
---- !u!114 &1594569319 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1704239393596241380, guid: f0840c4ff522bfe4b9c2e8000e824714, type: 3}
-  m_PrefabInstance: {fileID: 1594569317}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52c28ac655370744ac72ba57c85f209, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1668053787
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,10 +763,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d85d997574c01f4ebe19d8cdfa1e274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootTransform: {fileID: 438983366}
+  shootTransform: {fileID: 0}
   prefabCollection: {fileID: 11400000, guid: 4c230ffa559493347a9a5e9318da097a, type: 2}
-  enemy: {fileID: 1594569319}
-  healthText: {fileID: 507124488}
+  enemy: {fileID: 0}
+  healthText: {fileID: 0}
   shootSpeed: 50
 --- !u!1 &1914033110
 GameObject:
