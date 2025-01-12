@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 8497014089711211342}
   - component: {fileID: 4217269228810661947}
   - component: {fileID: 3431351987157272941}
-  - component: {fileID: -5439878186090584509}
+  - component: {fileID: -5574022839511532304}
+  - component: {fileID: 590580855747970940}
   m_Layer: 0
   m_Name: Eldar
-  m_TagString: Teachers
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +110,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5439878186090584509
+--- !u!54 &-5574022839511532304
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8638878263539376899}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &590580855747970940
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,37 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8638878263539376899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52c28ac655370744ac72ba57c85f209, type: 3}
+  m_Script: {fileID: 11500000, guid: b1e723f392f184048b5d85981a3d4543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsManager: {fileID: 0}
-  HitShlomo:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -5439878186090584509}
-        m_TargetAssemblyTypeName: Homework2.Scripts.Ob2, Homework2
-        m_MethodName: OnHitShlomo
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  HitMark:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -5439878186090584509}
-        m_TargetAssemblyTypeName: Homework2.Scripts.Ob2, Homework2
-        m_MethodName: OnHitMark
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  damage: 12
