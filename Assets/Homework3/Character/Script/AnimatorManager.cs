@@ -7,12 +7,12 @@ namespace Homework3.Character.Script
     {
         [SerializeField] private Animator animator;
 
-        private static readonly int IdleHashed = Animator.StringToHash("idleSpeed");
+        private static readonly int CrouchHashed = Animator.StringToHash("crouchSpeed");
         private static readonly int MoveHashed = Animator.StringToHash("moveSpeed");
 
         private void Start()
         {
-            animator.SetFloat(IdleHashed, 1.5f);
+            animator.SetFloat(CrouchHashed, 0.8f);
             animator.SetFloat(MoveHashed, 1.2f);
         }
     }
