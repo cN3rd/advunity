@@ -1,60 +1,62 @@
 using UnityEngine;
 
-public class MovementStateMachine : StateMachineBehaviour
+namespace Homework3.Character.Script
 {
-    private CharacterController playerController;
-    private CharacterMovement characterMovement;
-    private float playerHealth;
-
-    private static readonly int playerAliveHash = Animator.StringToHash("characterAlive");
-    public MovementStateMachine()
+    public class MovementStateMachine : StateMachineBehaviour
     {
-        Debug.Log("MovementStateMachine script is being created!");
-    }
+        private CharacterController _playerController;
+        private CharacterMovement _characterMovement;
+        private float _playerHealth;
 
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        Debug.Log("Entered Falling State!");
-        playerController = animator.GetComponentInParent<CharacterController>();
-        characterMovement = animator.GetComponentInParent<CharacterMovement>();
-        if (playerController != null)
+        private static readonly int PlayerAliveHash = Animator.StringToHash("characterAlive");
+        public MovementStateMachine()
         {
-            playerController.enabled = false;
-        }
-        else
-        {
-            Debug.LogError("CharacterController not found!");
+            Debug.Log("MovementStateMachine script is being created!");
         }
 
-        playerHealth = characterMovement.Health;
-
-        if (playerHealth > 0)
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            playerController.enabled = true;
-            characterMovement.Animator.SetBool(playerAliveHash, true);
-        }
-        else
-        {
-            characterMovement.Animator.SetBool(playerAliveHash, false);
-        }
-    }
-
-
-    public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
-    {
-        Debug.Log("Exited SubState machine!");
-
-        if (playerController != null && characterMovement != null)
-        {
-            playerHealth = characterMovement.Health;
-            if (playerHealth > 0)
+            Debug.Log("Entered Falling State!");
+            _playerController = animator.GetComponentInParent<CharacterController>();
+            _characterMovement = animator.GetComponentInParent<CharacterMovement>();
+            if (_playerController)
             {
-                playerController.enabled = true;
-                characterMovement.Animator.SetBool(playerAliveHash, true);
+                _playerController.enabled = false;
             }
             else
             {
-                characterMovement.Animator.SetBool(playerAliveHash, false);
+                Debug.LogError("CharacterController not found!");
+            }
+
+            _playerHealth = _characterMovement.Health;
+
+            if (_playerHealth > 0)
+            {
+                _playerController.enabled = true;
+                _characterMovement.Animator.SetBool(PlayerAliveHash, true);
+            }
+            else
+            {
+                _characterMovement.Animator.SetBool(PlayerAliveHash, false);
+            }
+        }
+
+
+        public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+        {
+            Debug.Log("Exited SubState machine!");
+
+            if (!_playerController || !_characterMovement) return;
+        
+            _playerHealth = _characterMovement.Health;
+            if (_playerHealth > 0)
+            {
+                _playerController.enabled = true;
+                _characterMovement.Animator.SetBool(PlayerAliveHash, true);
+            }
+            else
+            {
+                _characterMovement.Animator.SetBool(PlayerAliveHash, false);
             }
         }
     }

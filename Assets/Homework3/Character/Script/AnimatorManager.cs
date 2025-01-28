@@ -15,5 +15,16 @@ namespace Homework3.Character.Script
             animator.SetFloat(CrouchHashed, 0.8f);
             animator.SetFloat(MoveHashed, 1.2f);
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                animator.SetLayerWeight(1,0.5f);
+            }else if (Input.GetKeyDown(KeyCode.L))
+            {
+                animator.SetLayerWeight(1,0.8f);
+            }
+        }
     }
 }

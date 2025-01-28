@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26f2986dda5c4d24fb5e128fd4e109e8
+guid: 0e7aaf0e16b527f43b4c5df7cc87db86
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CrouchWalking
+      name: DrunkWalk
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 62
+      lastFrame: 179
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
