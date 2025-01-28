@@ -3,7 +3,10 @@ using UnityEngine;
 public class MovementStateMachine : StateMachineBehaviour
 {
     private CharacterController playerController;
+    private CharacterMovement characterMovement;
+    private float playerHealth;
 
+    private static readonly int playerAliveHash = Animator.StringToHash("characterAlive");
     public MovementStateMachine()
     {
         Debug.Log("MovementStateMachine script is being created!");
@@ -13,7 +16,7 @@ public class MovementStateMachine : StateMachineBehaviour
     {
         Debug.Log("Entered Falling State!");
         playerController = animator.GetComponentInParent<CharacterController>();
-
+        characterMovement = animator.GetComponentInParent<CharacterMovement>();
         if (playerController != null)
         {
             playerController.enabled = false;
@@ -22,6 +25,18 @@ public class MovementStateMachine : StateMachineBehaviour
         {
             Debug.LogError("CharacterController not found!");
         }
+
+        playerHealth = characterMovement.Health;
+
+        if (playerHealth > 0)
+        {
+            playerController.enabled = true;
+            characterMovement.Animator.SetBool(playerAliveHash, true);
+        }
+        else
+        {
+            characterMovement.Animator.SetBool(playerAliveHash, false);
+        }
     }
 
 
@@ -29,9 +44,18 @@ public class MovementStateMachine : StateMachineBehaviour
     {
         Debug.Log("Exited SubState machine!");
 
-        if (playerController != null)
+        if (playerController != null && characterMovement != null)
         {
-            playerController.enabled = true;
+            playerHealth = characterMovement.Health;
+            if (playerHealth > 0)
+            {
+                playerController.enabled = true;
+                characterMovement.Animator.SetBool(playerAliveHash, true);
+            }
+            else
+            {
+                characterMovement.Animator.SetBool(playerAliveHash, false);
+            }
         }
     }
 }

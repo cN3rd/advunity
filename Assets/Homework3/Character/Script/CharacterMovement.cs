@@ -7,6 +7,10 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float movementSpeed;
     [SerializeField] private float playerRotationSpeed;
+    [SerializeField] private float health;
+
+    public float Health { get { return health; } }
+    public Animator Animator { get { return animator; } }
 
     private Vector3 _playerDirection;
     private Vector2 _playerInput;
@@ -14,7 +18,6 @@ public class CharacterMovement : MonoBehaviour
 
     private static readonly int isCrouchHash = Animator.StringToHash("isCrouch");
     private static readonly int moveSpeedHash = Animator.StringToHash("moveSpeed");
-    private static readonly int isFallingHash = Animator.StringToHash("isFalling");
     private static readonly int falling = Animator.StringToHash("StartFalling");
 
 
